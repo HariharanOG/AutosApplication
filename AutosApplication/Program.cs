@@ -1,4 +1,6 @@
 using AutosApplication.Data;
+using AutosApplication.Infrastructure.Interfaces;
+using AutosApplication.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,10 +29,14 @@ namespace AutosApplication
             services.AddDbContextFactory<AppDbContext>(options =>
                 options.UseSqlServer(config.GetConnectionString("Default")));
 
-            var provider = services.BuildServiceProvider();
-            var dbContextFactory = provider.GetRequiredService<IDbContextFactory<AppDbContext>>();
+            services.AddScoped<IVehicleService, VehicleService>();
+            services.AddScoped<IVendorService, VendorService>();
+            services.AddScoped<IServiceRecordService, ServiceRecordService>();
 
-            Application.Run(new AutoForm(dbContextFactory));
+            var provider = services.BuildServiceProvider();
+            var vehicleService = provider.GetRequiredService<IVehicleService>();
+
+            Application.Run(new AutoForm(vehicleService));
         }
     }
 }

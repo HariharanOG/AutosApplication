@@ -28,12 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            dataGridView1 = new DataGridView();
+            Make = new DataGridViewTextBoxColumn();
+            Model = new DataGridViewTextBoxColumn();
+            Year = new DataGridViewTextBoxColumn();
+            VIN = new DataGridViewTextBoxColumn();
+            LicensePlate = new DataGridViewTextBoxColumn();
+            CurrentMileage = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Make, Model, Year, VIN, LicensePlate, CurrentMileage });
+            dataGridView1.Location = new Point(12, 101);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(1083, 534);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // Make
+            // 
+            Make.HeaderText = "Vehicle Make";
+            Make.Name = "Make";
+            Make.ReadOnly = true;
+            // 
+            // Model
+            // 
+            Model.HeaderText = "Vehicle Model";
+            Model.Name = "Model";
+            Model.ReadOnly = true;
+            // 
+            // Year
+            // 
+            Year.HeaderText = "Vehicle Year";
+            Year.Name = "Year";
+            Year.ReadOnly = true;
+            // 
+            // VIN
+            // 
+            VIN.HeaderText = "Vehicle Vin";
+            VIN.Name = "VIN";
+            VIN.ReadOnly = true;
+            // 
+            // LicensePlate
+            // 
+            LicensePlate.HeaderText = "Vehicle License Plate";
+            LicensePlate.Name = "LicensePlate";
+            LicensePlate.ReadOnly = true;
+            // 
+            // CurrentMileage
+            // 
+            CurrentMileage.HeaderText = "Current Mileage";
+            CurrentMileage.Name = "CurrentMileage";
+            // 
+            // AutoForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1107, 659);
+            Controls.Add(dataGridView1);
+            Name = "AutoForm";
             Text = "Autos";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Make;
+        private DataGridViewTextBoxColumn Model;
+        private DataGridViewTextBoxColumn Year;
+        private DataGridViewTextBoxColumn VIN;
+        private DataGridViewTextBoxColumn LicensePlate;
+        private DataGridViewTextBoxColumn CurrentMileage;
     }
 }

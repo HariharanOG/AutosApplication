@@ -1,16 +1,24 @@
 using AutosApplication.Data;
+using AutosApplication.Infrastructure.Interfaces;
+using AutosApplication.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AutosApplication
 {
     public partial class AutoForm : Form
     {
-        private readonly IDbContextFactory<AppDbContext> _dbContextFactory;
+        private readonly IVehicleService _vehicleService;
 
-        public AutoForm(IDbContextFactory<AppDbContext> dbContextFactory)
+        public AutoForm(IVehicleService vehicleService)
         {
             InitializeComponent();
-            _dbContextFactory = dbContextFactory;
+            _vehicleService = vehicleService;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var vehicles = _vehicleService.GetAllAsync();
+            dataGridView1.DataSource = vehicles;
         }
     }
 }
