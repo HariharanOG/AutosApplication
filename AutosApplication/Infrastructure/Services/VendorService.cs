@@ -17,19 +17,19 @@ namespace AutosApplication.Infrastructure.Services
         public async Task<List<Vendor>> GetAllAsync()
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            return await db.Vendors.AsNoTracking().ToListAsync();
+            return await db.Vendor.AsNoTracking().ToListAsync();
         }
 
         public async Task<Vendor?> GetByIdAsync(int vendorId)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            return await db.Vendors.AsNoTracking().FirstOrDefaultAsync(v => v.VendorId == vendorId);
+            return await db.Vendor.AsNoTracking().FirstOrDefaultAsync(v => v.VendorId == vendorId);
         }
 
         public async Task<Vendor> AddAsync(Vendor vendor)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            db.Vendors.Add(vendor);
+            db.Vendor.Add(vendor);
             await db.SaveChangesAsync();
             return vendor;
         }
@@ -37,17 +37,17 @@ namespace AutosApplication.Infrastructure.Services
         public async Task UpdateAsync(Vendor vendor)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            db.Vendors.Update(vendor);
+            db.Vendor.Update(vendor);
             await db.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int vendorId)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            var vendor = await db.Vendors.FindAsync(vendorId);
+            var vendor = await db.Vendor.FindAsync(vendorId);
             if (vendor is null) return;
 
-            db.Vendors.Remove(vendor);
+            db.Vendor.Remove(vendor);
             await db.SaveChangesAsync();
         }
 

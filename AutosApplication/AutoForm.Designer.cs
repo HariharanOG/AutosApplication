@@ -46,40 +46,45 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1083, 534);
             dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Make
             // 
+            Make.DataPropertyName = "Make";
             Make.HeaderText = "Vehicle Make";
             Make.Name = "Make";
             Make.ReadOnly = true;
             // 
             // Model
             // 
+            Model.DataPropertyName = "Model";
             Model.HeaderText = "Vehicle Model";
             Model.Name = "Model";
             Model.ReadOnly = true;
             // 
             // Year
             // 
+            Year.DataPropertyName = "Year";
             Year.HeaderText = "Vehicle Year";
             Year.Name = "Year";
             Year.ReadOnly = true;
             // 
             // VIN
             // 
+            VIN.DataPropertyName = "VIN";
             VIN.HeaderText = "Vehicle Vin";
             VIN.Name = "VIN";
             VIN.ReadOnly = true;
             // 
             // LicensePlate
             // 
+            LicensePlate.DataPropertyName = "LicensePlate";
             LicensePlate.HeaderText = "Vehicle License Plate";
             LicensePlate.Name = "LicensePlate";
             LicensePlate.ReadOnly = true;
             // 
             // CurrentMileage
             // 
+            Make.DataPropertyName = "CurrentMileage";
             CurrentMileage.HeaderText = "Current Mileage";
             CurrentMileage.Name = "CurrentMileage";
             // 
@@ -91,6 +96,7 @@
             Controls.Add(dataGridView1);
             Name = "AutoForm";
             Text = "Autos";
+            Load += new System.EventHandler(this.AutoForm_Load);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }

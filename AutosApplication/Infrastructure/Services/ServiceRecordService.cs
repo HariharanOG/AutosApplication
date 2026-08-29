@@ -17,13 +17,13 @@ namespace AutosApplication.Infrastructure.Services
         public async Task<List<ServiceRecord>> GetAllAsync()
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            return await db.ServiceRecords.AsNoTracking().ToListAsync();
+            return await db.ServiceRecord.AsNoTracking().ToListAsync();
         }
 
         public async Task<List<ServiceRecord>> GetByVehicleIdAsync(int vehicleId)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            return await db.ServiceRecords.AsNoTracking()
+            return await db.ServiceRecord.AsNoTracking()
                 .Where(s => s.VehicleId == vehicleId)
                 .OrderByDescending(s => s.ServiceDate)
                 .ToListAsync();
@@ -32,13 +32,13 @@ namespace AutosApplication.Infrastructure.Services
         public async Task<ServiceRecord?> GetByIdAsync(int serviceId)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            return await db.ServiceRecords.AsNoTracking().FirstOrDefaultAsync(s => s.ServiceId == serviceId);
+            return await db.ServiceRecord.AsNoTracking().FirstOrDefaultAsync(s => s.ServiceId == serviceId);
         }
 
         public async Task<ServiceRecord> AddAsync(ServiceRecord serviceRecord)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            db.ServiceRecords.Add(serviceRecord);
+            db.ServiceRecord.Add(serviceRecord);
             await db.SaveChangesAsync();
             return serviceRecord;
         }
@@ -46,17 +46,17 @@ namespace AutosApplication.Infrastructure.Services
         public async Task UpdateAsync(ServiceRecord serviceRecord)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            db.ServiceRecords.Update(serviceRecord);
+            db.ServiceRecord.Update(serviceRecord);
             await db.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int serviceId)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            var record = await db.ServiceRecords.FindAsync(serviceId);
+            var record = await db.ServiceRecord.FindAsync(serviceId);
             if (record is null) return;
 
-            db.ServiceRecords.Remove(record);
+            db.ServiceRecord.Remove(record);
             await db.SaveChangesAsync();
         }
     }

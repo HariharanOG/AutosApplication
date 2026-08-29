@@ -1,7 +1,4 @@
-using AutosApplication.Data;
 using AutosApplication.Infrastructure.Interfaces;
-using AutosApplication.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace AutosApplication
 {
@@ -15,9 +12,9 @@ namespace AutosApplication
             _vehicleService = vehicleService;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void AutoForm_Load(object sender, EventArgs e)
         {
-            var vehicles = _vehicleService.GetAllAsync();
+            var vehicles = await _vehicleService.GetAllAsync();
             dataGridView1.DataSource = vehicles;
         }
     }

@@ -17,19 +17,19 @@ namespace AutosApplication.Infrastructure.Services
         public async Task<List<Vehicle>> GetAllAsync()
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            return await db.Vehicles.AsNoTracking().ToListAsync();
+            return await db.Vehicle.AsNoTracking().ToListAsync();
         }
 
         public async Task<Vehicle?> GetByIdAsync(int vehicleId)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            return await db.Vehicles.AsNoTracking().FirstOrDefaultAsync(v => v.VehicleId == vehicleId);
+            return await db.Vehicle.AsNoTracking().FirstOrDefaultAsync(v => v.VehicleId == vehicleId);
         }
 
         public async Task<Vehicle> AddAsync(Vehicle vehicle)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            db.Vehicles.Add(vehicle);
+            db.Vehicle.Add(vehicle);
             await db.SaveChangesAsync();
             return vehicle;
         }
@@ -37,7 +37,7 @@ namespace AutosApplication.Infrastructure.Services
         public async Task<Vehicle> UpdateAsync(Vehicle vehicle)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            db.Vehicles.Update(vehicle);
+            db.Vehicle.Update(vehicle);
             await db.SaveChangesAsync();
             return vehicle;
         }
@@ -45,10 +45,10 @@ namespace AutosApplication.Infrastructure.Services
         public async Task DeleteAsync(int vehicleId)
         {
             await using var db = await _dbContextFactory.CreateDbContextAsync();
-            var vehicle = await db.Vehicles.FindAsync(vehicleId);
+            var vehicle = await db.Vehicle.FindAsync(vehicleId);
             if (vehicle is null) return;
 
-            db.Vehicles.Remove(vehicle);
+            db.Vehicle.Remove(vehicle);
             await db.SaveChangesAsync();
         }
     }

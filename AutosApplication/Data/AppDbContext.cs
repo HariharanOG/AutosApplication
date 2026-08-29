@@ -10,12 +10,15 @@ namespace AutosApplication.Data
         {
         }
 
-        public DbSet<Vehicle> Vehicles => Set<Vehicle>();
-        public DbSet<Vendor> Vendors => Set<Vendor>();
-        public DbSet<ServiceRecord> ServiceRecords => Set<ServiceRecord>();
+        public DbSet<Vehicle> Vehicle => Set<Vehicle>();
+        public DbSet<Vendor> Vendor => Set<Vendor>();
+        public DbSet<ServiceRecord> ServiceRecord => Set<ServiceRecord>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ServiceRecord>()
+                .HasKey(s => s.ServiceId);
+
             modelBuilder.Entity<ServiceRecord>()
                 .Property(s => s.Cost)
                 .HasPrecision(10, 2);
