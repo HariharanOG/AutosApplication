@@ -21,6 +21,15 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.11" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.11" />
+		<Compile Update="Properties\Resources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+		<EmbeddedResource Update="Properties\Resources.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 		<None Update="appsettings.json">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>

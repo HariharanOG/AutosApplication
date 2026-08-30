@@ -35,6 +35,7 @@
             VIN = new DataGridViewTextBoxColumn();
             LicensePlate = new DataGridViewTextBoxColumn();
             CurrentMileage = new DataGridViewTextBoxColumn();
+            AutosPageHeader = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -42,9 +43,9 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Make, Model, Year, VIN, LicensePlate, CurrentMileage });
-            dataGridView1.Location = new Point(12, 101);
+            dataGridView1.Location = new Point(143, 193);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1083, 534);
+            dataGridView1.Size = new Size(722, 197);
             dataGridView1.TabIndex = 0;
             // 
             // Make
@@ -84,19 +85,28 @@
             // 
             // CurrentMileage
             // 
-            Make.DataPropertyName = "CurrentMileage";
+            CurrentMileage.DataPropertyName = "CurrentMileage";
             CurrentMileage.HeaderText = "Current Mileage";
             CurrentMileage.Name = "CurrentMileage";
+            // 
+            // AutosPageHeader
+            // 
+            AutosPageHeader.BackColor = SystemColors.ActiveCaption;
+            AutosPageHeader.Location = new Point(-4, -2);
+            AutosPageHeader.Name = "AutosPageHeader";
+            AutosPageHeader.Size = new Size(1112, 104);
+            AutosPageHeader.TabIndex = 1;
             // 
             // AutoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1107, 659);
+            Controls.Add(AutosPageHeader);
             Controls.Add(dataGridView1);
             Name = "AutoForm";
             Text = "Autos";
-            Load += new System.EventHandler(this.AutoForm_Load);
+            Load += AutoForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
@@ -110,5 +120,6 @@
         private DataGridViewTextBoxColumn VIN;
         private DataGridViewTextBoxColumn LicensePlate;
         private DataGridViewTextBoxColumn CurrentMileage;
+        private Panel AutosPageHeader;
     }
 }
